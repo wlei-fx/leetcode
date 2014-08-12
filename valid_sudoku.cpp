@@ -57,7 +57,6 @@ public:
 				int r = i/3*3 + j/3;
 				int c = (i%3)*3 + j%3;
 
-				cout<<r<<" "<<c<<" "<<endl;
 				if(board[r][c] >= '1' && board[r][c] <= '9')
 				{
 					if(cnt[board[r][c]-'1'])
