@@ -47,10 +47,10 @@ public:
 			return ;
 		}
 
-		subsets(s, start+1, solution, result);
-		solution.push_back(s[start]);										// find subsets including start
-		result.push_back(solution);
 		subsets(s, start+1, solution, result);								// find subsets not including start
+		solution.push_back(s[start]);										
+		result.push_back(solution);
+		subsets(s, start+1, solution, result);								// find subsets including start
 		solution.pop_back();
 	}
 };
