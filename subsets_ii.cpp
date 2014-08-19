@@ -33,25 +33,24 @@ class Solution
 public:
 	vector<vector<int> > subsets(vector<int> &s) {
 		vector<int> solution;
-		vector<vector<int> > result(1, solution);
+		vector<vector<int> > result;
 
-		sort(s.begin(), s.end());
+		sort(s.begin(), s.end());					// firstly, sort
 		subsets(s, 0, solution, result);
 		return result;
 	}
 
 	void subsets(vector<int> &s, int start, vector<int> &solution, vector<vector<int> > &result)
 	{
-		if(start == s.size())
-		{
-			return ;
-		}
-
-		subsets(s, start+1, solution, result);
-		solution.push_back(s[start]);										// find subsets including start
 		result.push_back(solution);
-		subsets(s, start+1, solution, result);								// find subsets not including start
-		solution.pop_back();
+		for(int i = start; i < s.size(); i++)
+		{
+			if(i != start && s[i]==s[i-1])
+				continue ;
+			solution.push_back(s[i]);
+			subsets(s, i+1, solution, result);		// find all solutions with s[i]
+			solution.pop_back();					// find all solutions without s[i]
+		}
 	}
 };
 
