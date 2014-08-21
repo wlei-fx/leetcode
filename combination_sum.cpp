@@ -27,35 +27,30 @@ public:
 	vector<vector<int>> combinationSum(vector<int> &c, int target)
 	{
 		vector<vector<int>> result;
-		vector<int> solution;
 		sort(c.begin(), c.end());
-		combinationSum(c, 0, target, solution, result, "");
+		for(int i = 0; i < c.size(); i++)
+		{
+			if(target < c[i])	return result;
+			vector<int> solution;
+			combinationSum(c, i, target-c[i], solution, result);
+		}
 
 		return result;
 	}
 
 	void combinationSum(vector<int> &c, int start, int target, 
-			vector<int> &solution, vector<vector<int>> &result, string tag)
+			vector<int> &solution, vector<vector<int>> &result)
 	{
-		cout<<tag<<" "<<start<<" ";
-		print(solution);
-		tag += "\t";
-		for(int i = start; i < c.size(); i++)
+		if(start >= c.size())	return ;
+		solution.push_back(c[start]);
+		if(c[start] == target)
 		{
-			if(target < c[i])	return ;
-			//if(i != start && c[i] == c[i-1])	continue ;
-			solution.push_back(c[i]);
-			if(c[i] == target)
-			{
-				result.push_back(solution);
-				cout<<tag<<" "<<i<<"  find: ";
-				print(solution);
-			} else {
-				combinationSum(c, i, target-c[i], solution, result, tag);
-				combinationSum(c, i+1, target-c[i], solution, result, tag);
-			}
-			solution.pop_back();
+			result.push_back(solution);
+		} else {
+			combinationSum(c, start, target-c[start], solution, result);
+			combinationSum(c, start+1, target-c[start], solution, result);
 		}
+		solution.pop_back();
 	}
 };
 
