@@ -19,7 +19,7 @@ A solution set is:
 [2, 2, 3] 
 ************************************************************************/
 
-#include "helper.h"
+#include "tools.h"
 
 class Solution
 {
@@ -48,7 +48,7 @@ public:
 			if(c[i] == target)
 			{
 				result.push_back(solution);
-				cout<<tag<<" find: ";
+				cout<<tag<<" "<<i<<"  find: ";
 				print(solution);
 			} else {
 				combinationSum(c, i, target-c[i], solution, result, tag);

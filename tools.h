@@ -1,3 +1,6 @@
+#ifndef __TOOLS_H__
+#define __TOOLS_H__
+
 #include <vector>
 #include <string>
 #include <algorithm>
@@ -22,3 +25,4 @@ void print(vector<vector<T>> &v)
 	});
 }
 
+#endif
