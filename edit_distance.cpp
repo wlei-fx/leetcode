@@ -28,6 +28,7 @@ public:
 		for(int i = 0; i <= m; i++)
 			dp[i][0] = i;
 
+		// 动态规划
 		for(int i = 0; i < m; i++)
 		{
 			for(int j = 0; j < n; j++)
