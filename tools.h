@@ -6,6 +6,9 @@
 #include <string>
 #include <algorithm>
 #include <iostream>
+#include <sstream>
+#include <unordered_set>
+#include <unordered_map>
 using namespace std;
 
 #define INT_MAX ((int)0x7fffffff)
