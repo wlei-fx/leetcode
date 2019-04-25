@@ -11,9 +11,6 @@
 #include <unordered_map>
 using namespace std;
 
-#define INT_MAX ((int)0x7fffffff)
-#define INT_MIN ((int)0x80000000)
-
 template <class T>
 void print(vector<T> &v)
 {
@@ -25,7 +22,7 @@ void print(vector<T> &v)
 }
 
 template <class T>
-void print(vector<vector<T>> &v)
+void print(vector<vector<T> > &v)
 {
 	for_each(v.begin(), v.end(), [](vector<T> &vec) {
 		print(vec);
