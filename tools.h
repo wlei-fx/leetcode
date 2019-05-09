@@ -16,7 +16,7 @@ void print(vector<T> &v)
 {
 	cout<<"[";
 	for_each(v.begin(), v.end(), [](T t) {
-		cout<<t<<",";		
+		cout<<t<<" ";		
 	});
 	cout<<"]"<<endl;
 }
