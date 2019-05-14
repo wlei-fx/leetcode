@@ -13,10 +13,7 @@ echo "" >> $1.cpp
 
 echo "************************************************************************/" >> $1.cpp
 
-echo "#include <vector>" >> $1.cpp
-echo "#include <string>" >> $1.cpp
-echo "#include <iostream>" >> $1.cpp
-echo "using namespace std;" >> $1.cpp
+echo "#include \"tools.h\"" >> $1.cpp
 echo "" >> $1.cpp
 echo "" >> $1.cpp
 echo "" >> $1.cpp
