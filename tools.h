@@ -24,9 +24,11 @@ void print(vector<T> &v)
 template <class T>
 void print(vector<vector<T> > &v)
 {
+	cout<<"["<<endl;
 	for_each(v.begin(), v.end(), [](vector<T> &vec) {
 		print(vec);
 	});
+	cout<<"]"<<endl;
 }
 
 template <class T>
