@@ -44,21 +44,25 @@ class Solution {
 public:
     int calculateMinimumHP(vector<vector<int>>& dungeon) {
         int m = dungeon.size(), n = dungeon[0].size();
-        vector<vector<int>> heal(m, vector<int>(n, 0));
-        vector<vector<int>> init(heal);
+        vector<vector<int>> a(m+1, vector<int>(n+1, 0));
+        vector<vector<int>> ad(m+1, vector<int>(n+1, 0));
         
-        init[m-1][n-1] = dungeon[m-1][n-1] >=0 ? 0 : -dungeon[m-1][n-1];
-        heal[m-1][n-1] = init[m-1][n-1] + dungeon[m-1][n-1];
-        
-        for (int i = m-1; i > 0; i--) {
-            for (int j = n-1; j > 0; j--) {
-                if (heal[i][j] + dungeon[i-1][j] >= 0) {
-                    init[i-1]
-                }
-            }
+        a[m-1][n-1] = min(0, dungeon[m-1][n-1]);
+        for (int i = m-2; i >= 0; i--) {
+            a[i][n-1] = min(0, a[i+1][n-1]+dungeon[i][n-1]);
         }
         
-        return init[m-1][n-1];
+        for (int j = n-2; j >= 0; j--) {
+            a[m-1][j] = min(0, a[m-1][j+1]+dungeon[m-1][j]);
+        }
+        
+        for (int i = m-2; i >= 0; i--) {
+            for (int j = n-2; j >= 0; j--) {
+                a[i][j] = min(0, max(a[i+1][j], a[i][j+1])+dungeon[i][j]);
+            }
+        }
+        print(a);
+        return 1-a[0][0];
     }
 };
 
@@ -68,8 +72,8 @@ int main() {
         // {{0}};
         // {{-200}};
         // {{0, -3}};
-        // {{1}, {-2}, {1}};
-        {{1, -3, 3}, {0, -2, 0}, {-3, -3, -3}};
+        {{1}, {-2}, {1}};
+        // {{1, -3, 3}, {0, -2, 0}, {-3, -3, -3}};
         print(dungeon);
     
     cout<<Solution().calculateMinimumHP(dungeon)<<endl;

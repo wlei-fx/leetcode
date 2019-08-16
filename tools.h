@@ -2,6 +2,7 @@
 #define __TOOLS_H__
 
 #include <vector>
+#include <list>
 #include <map>
 #include <string>
 #include <algorithm>
@@ -9,10 +10,21 @@
 #include <sstream>
 #include <unordered_set>
 #include <unordered_map>
+#include <stack>
 using namespace std;
 
 template <class T>
 void print(vector<T> &v)
+{
+	cout<<"[";
+	for_each(v.begin(), v.end(), [](T t) {
+		cout<<t<<" ";
+	});
+	cout<<"]"<<endl;
+}
+
+template <class T>
+void print(list<T> &v)
 {
 	cout<<"[";
 	for_each(v.begin(), v.end(), [](T t) {
@@ -61,6 +73,7 @@ struct TreeNode
 	TreeNode *left;
 	TreeNode *right;
 	TreeNode(int v): val(v), left(NULL), right(NULL) {}
+	TreeNode(int x, TreeNode *l, TreeNode *r): val(x), left(l), right(r) {}
 };
 
 TreeNode *makeTree(vector<int> vals)
